@@ -56,7 +56,7 @@ class CadastrarClienteTest {
     void deveLancarExcecaoQuandoCpfForNulo() {
         Cliente cliente = new Cliente();
         cliente.setNome("Nome");
-        cliente.setEmail("email@example.com");
+        cliente.setEmail("email@exemplo.com");
         cliente.setCpf(null);
 
         assertThrows(NullPointerException.class, () -> cadastrarClienteNulo.cadastrarCliente(cliente),
@@ -68,7 +68,7 @@ class CadastrarClienteTest {
     void deveLancarExcecaoQuandoCpfForVazio() {
         Cliente cliente = new Cliente();
         cliente.setNome("Nome");
-        cliente.setEmail("email@example.com");
+        cliente.setEmail("email@exemplo.com");
         cliente.setCpf("");
 
         assertThrows(NullPointerException.class, () -> cadastrarClienteNulo.cadastrarCliente(cliente),
@@ -79,7 +79,7 @@ class CadastrarClienteTest {
     @DisplayName("Deve lançar exceção quando o nome for nulo")
     void deveLancarExcecaoQuandoNomeForNulo() {
         Cliente cliente = new Cliente();
-        cliente.setCpf("12345678900");
+        cliente.setCpf("123.456.789-00");
         cliente.setEmail("email@example.com");
         cliente.setNome(null);
 
@@ -91,7 +91,7 @@ class CadastrarClienteTest {
     @DisplayName("Deve lançar exceção quando o nome for vazio")
     void deveLancarExcecaoQuandoNomeForVazio() {
         Cliente cliente = new Cliente();
-        cliente.setCpf("12345678900");
+        cliente.setCpf("123.456.789-00");
         cliente.setEmail("email@example.com");
         cliente.setNome("");
 
@@ -103,7 +103,7 @@ class CadastrarClienteTest {
     @DisplayName("Deve lançar exceção quando o email for nulo")
     void deveLancarExcecaoQuandoEmailForNulo() {
         Cliente cliente = new Cliente();
-        cliente.setCpf("12345678900");
+        cliente.setCpf("123.456.789-00");
         cliente.setNome("Nome");
         cliente.setEmail(null);
 
@@ -115,12 +115,33 @@ class CadastrarClienteTest {
     @DisplayName("Deve lançar exceção quando o email for vazio")
     void deveLancarExcecaoQuandoEmailForVazio() {
         Cliente cliente = new Cliente();
-        cliente.setCpf("12345678900");
+        cliente.setCpf("123.456.789-00");
         cliente.setNome("Nome");
         cliente.setEmail("");
 
         assertThrows(NullPointerException.class, () -> cadastrarClienteNulo.cadastrarCliente(cliente),
                 "Campo Obrigatório está nulo ou vazio");
+    }
+
+
+
+    @Test
+    @DisplayName("Deve lançar exceção quando o CPF estiver em formato inválido")
+    void deveLancarExcecaoQuandoCpfFormatoInvalido() {
+        String cpfInvalido = "12345678900";
+        assertThrows(IllegalArgumentException.class, () ->
+                        new Cliente("Nome", cpfInvalido, "email@example.com", "senha"),
+                "CPF no formato inválido"
+        );
+    }
+
+    @Test
+    @DisplayName("Deve lançar exceção quando o Email estiver em formato inválido")
+    void deveLancarExcecaoQuandoEmailFormatoInvalido() {
+        String emailInvalido = "email@com";
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Cliente("Nome", "123.456.789-00", emailInvalido, "senha");
+        });
     }
 
 }
