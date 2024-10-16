@@ -1,4 +1,4 @@
-package br.com.fiap.fiaptechchallengefase4.infra.repository;
+package br.com.fiap.fiaptechchallengefase4.gateway.repository;
 
 import br.com.fiap.fiaptechchallengefase4.core.domain.Produto;
 import br.com.fiap.fiaptechchallengefase4.infra.persistence.ProdutoEntity;

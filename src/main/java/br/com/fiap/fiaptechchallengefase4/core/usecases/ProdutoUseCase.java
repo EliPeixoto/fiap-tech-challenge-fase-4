@@ -2,7 +2,7 @@ package br.com.fiap.fiaptechchallengefase4.core.usecases;
 
 import br.com.fiap.fiaptechchallengefase4.core.domain.Produto;
 import br.com.fiap.fiaptechchallengefase4.core.mapper.ProdutoMapper;
-import br.com.fiap.fiaptechchallengefase4.infra.repository.ProdutoRepository;
+import br.com.fiap.fiaptechchallengefase4.gateway.repository.ProdutoRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
