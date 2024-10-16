@@ -18,7 +18,7 @@ public class Cliente {
             throw new IllegalArgumentException("CPF no formato inválido");
         }
 
-        if(!email.contains("@") && !email.contains(".")){
+        if(!email.contains("@") || !email.contains(".")){
             throw new IllegalArgumentException("Email no formato incorreto");
         }
 
@@ -39,7 +39,7 @@ public class Cliente {
             throw new IllegalArgumentException("CPF no formato inválido");
         }
 
-        if(!email.contains("@") && !email.contains(".")){
+        if(!email.contains("@") || !email.contains(".")){
             throw new IllegalArgumentException("Email no formato incorreto");
         }
 
