@@ -11,6 +11,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 
@@ -23,6 +24,7 @@ class CadastrarClienteTest {
     private CadastrarClienteInterface cadastrarClienteInterface;
 
 
+
     @Test
     @DisplayName("Deve cadastrar um cliente com sucesso")
     void cadastrarCliente() {
@@ -33,6 +35,92 @@ class CadastrarClienteTest {
 
         verify(cadastrarClienteInterface).cadastrarCliente(isA(Cliente.class));
         assertSame(cliente, clienteCadastrado);
+    }
+
+    @Test
+    @DisplayName("Deve lançar uma exceção ao tentar cadastrar um cliente inválido")
+    void cadastrarClienteInvalido() {
+        when(cadastrarClienteInterface.cadastrarCliente(any(Cliente.class)))
+                .thenThrow(new IllegalArgumentException("Dados Invalidos"));
+
+        assertThrows(IllegalArgumentException.class, () ->{
+            cadastrarCliente.cadastrarCliente(new Cliente());
+        });
+
+        verify(cadastrarClienteInterface).cadastrarCliente(isA(Cliente.class));
+    }
+
+    private final CadastrarCliente cadastrarClienteNulo = new CadastrarCliente(null);
+    @Test
+    @DisplayName("Deve lançar exceção quando o CPF for nulo")
+    void deveLancarExcecaoQuandoCpfForNulo() {
+        Cliente cliente = new Cliente();
+        cliente.setNome("Nome");
+        cliente.setEmail("email@example.com");
+        cliente.setCpf(null);
+
+        assertThrows(NullPointerException.class, () -> cadastrarClienteNulo.cadastrarCliente(cliente),
+                "Campo Obrigatório está nulo ou vazio");
+    }
+
+    @Test
+    @DisplayName("Deve lançar exceção quando o CPF for vazio")
+    void deveLancarExcecaoQuandoCpfForVazio() {
+        Cliente cliente = new Cliente();
+        cliente.setNome("Nome");
+        cliente.setEmail("email@example.com");
+        cliente.setCpf("");
+
+        assertThrows(NullPointerException.class, () -> cadastrarClienteNulo.cadastrarCliente(cliente),
+                "Campo Obrigatório está nulo ou vazio");
+    }
+
+    @Test
+    @DisplayName("Deve lançar exceção quando o nome for nulo")
+    void deveLancarExcecaoQuandoNomeForNulo() {
+        Cliente cliente = new Cliente();
+        cliente.setCpf("12345678900");
+        cliente.setEmail("email@example.com");
+        cliente.setNome(null);
+
+        assertThrows(NullPointerException.class, () -> cadastrarClienteNulo.cadastrarCliente(cliente),
+                "Campo Obrigatório está nulo ou vazio");
+    }
+
+    @Test
+    @DisplayName("Deve lançar exceção quando o nome for vazio")
+    void deveLancarExcecaoQuandoNomeForVazio() {
+        Cliente cliente = new Cliente();
+        cliente.setCpf("12345678900");
+        cliente.setEmail("email@example.com");
+        cliente.setNome("");
+
+        assertThrows(NullPointerException.class, () -> cadastrarClienteNulo.cadastrarCliente(cliente),
+                "Campo Obrigatório está nulo ou vazio");
+    }
+
+    @Test
+    @DisplayName("Deve lançar exceção quando o email for nulo")
+    void deveLancarExcecaoQuandoEmailForNulo() {
+        Cliente cliente = new Cliente();
+        cliente.setCpf("12345678900");
+        cliente.setNome("Nome");
+        cliente.setEmail(null);
+
+        assertThrows(NullPointerException.class, () -> cadastrarClienteNulo.cadastrarCliente(cliente),
+                "Campo Obrigatório está nulo ou vazio");
+    }
+
+    @Test
+    @DisplayName("Deve lançar exceção quando o email for vazio")
+    void deveLancarExcecaoQuandoEmailForVazio() {
+        Cliente cliente = new Cliente();
+        cliente.setCpf("12345678900");
+        cliente.setNome("Nome");
+        cliente.setEmail("");
+
+        assertThrows(NullPointerException.class, () -> cadastrarClienteNulo.cadastrarCliente(cliente),
+                "Campo Obrigatório está nulo ou vazio");
     }
 
 }
