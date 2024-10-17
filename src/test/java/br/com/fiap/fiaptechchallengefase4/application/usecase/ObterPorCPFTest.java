@@ -37,4 +37,18 @@ class ObterPorCPFTest {
         assertEquals(clienteMock, clienteRetornado);
         verify(obterPorCPFInterface, times(1)).obterClientePorCPF(cpf);
     }
+
+    @Test
+    @DisplayName("Deve retornar nulo quando CPF não encontrado")
+    public void deveRetornarNulo() {
+        String cpfInvalido = "000.000.000-00";
+
+        when(obterPorCPFInterface.obterClientePorCPF(cpfInvalido)).thenReturn(null);
+
+        Cliente clienteRetornado = obterPorCPF.obterClientePorCPF(cpfInvalido);
+
+
+        assertEquals(null, clienteRetornado);
+        verify(obterPorCPFInterface, times(1)).obterClientePorCPF(cpfInvalido);
+    }
 }
