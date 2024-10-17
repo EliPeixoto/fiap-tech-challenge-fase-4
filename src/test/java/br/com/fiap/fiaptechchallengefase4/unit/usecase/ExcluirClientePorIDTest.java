@@ -1,6 +1,7 @@
-package br.com.fiap.fiaptechchallengefase4.application.usecase;
+package br.com.fiap.fiaptechchallengefase4.unit.usecase;
 
 import br.com.fiap.fiaptechchallengefase4.application.gateway.ExcluirClientePorIDInterface;
+import br.com.fiap.fiaptechchallengefase4.application.usecase.ExcluirClientePorID;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

@@ -1,6 +1,7 @@
-package br.com.fiap.fiaptechchallengefase4.application.usecase;
+package br.com.fiap.fiaptechchallengefase4.unit.usecase;
 
 import br.com.fiap.fiaptechchallengefase4.application.gateway.AtualizarClienteInterface;
+import br.com.fiap.fiaptechchallengefase4.application.usecase.AtualizarCliente;
 import br.com.fiap.fiaptechchallengefase4.domain.entities.Cliente;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

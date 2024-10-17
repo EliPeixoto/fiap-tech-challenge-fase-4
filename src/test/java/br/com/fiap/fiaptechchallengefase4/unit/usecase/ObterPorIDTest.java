@@ -1,6 +1,7 @@
-package br.com.fiap.fiaptechchallengefase4.application.usecase;
+package br.com.fiap.fiaptechchallengefase4.unit.usecase;
 
 import br.com.fiap.fiaptechchallengefase4.application.gateway.ObterPorIDInterface;
+import br.com.fiap.fiaptechchallengefase4.application.usecase.ObterPorID;
 import br.com.fiap.fiaptechchallengefase4.domain.entities.Cliente;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
