@@ -1,7 +1,7 @@
-package br.com.fiap.fiaptechchallengefase4.presenters.controllers;
+package br.com.fiap.fiaptechchallengefase4.adapters.controllers;
 
 import br.com.fiap.fiaptechchallengefase4.core.domain.Produto;
-import br.com.fiap.fiaptechchallengefase4.presenters.dtos.ProdutoDTO;
+import br.com.fiap.fiaptechchallengefase4.adapters.dtos.ProdutoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import br.com.fiap.fiaptechchallengefase4.core.usecases.ProdutoUseCase;

@@ -2,7 +2,6 @@ package br.com.fiap.fiaptechchallengefase4.core.mapper;
 
 import br.com.fiap.fiaptechchallengefase4.core.domain.Produto;
 import br.com.fiap.fiaptechchallengefase4.infra.persistence.ProdutoEntity;
-import br.com.fiap.fiaptechchallengefase4.presenters.dtos.ProdutoDTO;
 
 public class ProdutoMapper {
     public static Produto toDomain(ProdutoEntity entity) {
