@@ -5,6 +5,7 @@ import br.com.fiap.fiaptechchallengefase4.presenters.dtos.ProdutoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import br.com.fiap.fiaptechchallengefase4.core.usecases.ProdutoUseCase;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,6 +15,7 @@ public class ProdutoController {
 
     @Autowired
     private ProdutoUseCase produtoUseCase;
+
     @GetMapping
     public List<ProdutoDTO> getAllProdutos() {
         return produtoUseCase.getAllProdutos().stream()
@@ -39,18 +41,13 @@ public class ProdutoController {
     }
 
     private ProdutoDTO convertToDTO(Produto produto) {
-        ProdutoDTO produtoDTO = new ProdutoDTO();
-        produtoDTO.setId(produto.getId());
-        produtoDTO.setNome(produto.getNome());
-        produtoDTO.setPreco(produto.getPreco());
+        ProdutoDTO produtoDTO = new ProdutoDTO(produto.getId(), produto.getNome(), produto.getPreco());
         return produtoDTO;
     }
 
     private Produto convertToEntity(ProdutoDTO produtoDTO) {
-        Produto produto = new Produto();
-        produto.setId(produtoDTO.getId());
-        produto.setNome(produtoDTO.getNome());
-        produto.setPreco(produtoDTO.getPreco());
+        Produto produto = new Produto(produtoDTO.getId(), produtoDTO.getNome(), produtoDTO.getPreco());
+
         return produto;
     }
 }

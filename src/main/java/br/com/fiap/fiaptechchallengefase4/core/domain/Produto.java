@@ -1,10 +1,11 @@
 package br.com.fiap.fiaptechchallengefase4.core.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-@Setter
+@AllArgsConstructor
 public class Produto {
 
     private Long id;

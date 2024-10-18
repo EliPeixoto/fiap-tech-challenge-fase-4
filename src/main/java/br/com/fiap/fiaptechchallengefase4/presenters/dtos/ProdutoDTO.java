@@ -1,11 +1,12 @@
 package br.com.fiap.fiaptechchallengefase4.presenters.dtos;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-@Setter
+@AllArgsConstructor
 public class ProdutoDTO {
     private Long id;
     private String nome;
